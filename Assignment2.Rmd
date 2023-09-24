@@ -1,0 +1,73 @@
+---
+title: "Assignment 2"
+author: "Nidhi Jha"
+date: "09/22/2022"
+output: html_document
+---
+```{r}
+
+# Importing Excel file into dataframe.
+
+#  df =readxl::read_excel("/Users/nidhi/Documents/Business      Forecasting/Assignments/W1/Typical_Employee_Survey_Data.xlsx"). When the directory is not set in session.
+
+library(readxl)
+df<- read_excel("Typical_Employee_Survey_Data.xlsx",col_names = FALSE)
+
+View(df)
+
+#1: Add Header Row
+
+colnames(df) <- c("A","B","C","D","E","F","G","H","I","J","K")
+
+#2: Print out the 5-point summary and boxplot (numerical columns) for each column
+
+boxplot(df, main="5-point Summary")
+
+fivenum(df$A)
+fivenum(df$B)
+fivenum(df$C)
+fivenum(df$D)
+fivenum(df$E)
+fivenum(df$F)
+fivenum(df$G)
+fivenum(df$H)
+fivenum(df$I)
+fivenum(df$J)
+fivenum(df$K)
+
+#3: Convert the columns that need to be converted to Factors 
+
+df$B<-as.factor(df$B)
+df$H<-as.factor(df$H)
+  str(df)
+table(df$A)
+
+#4: Plot the right visual for each column 
+
+
+plot(df, col="purple")
+
+hist(df$A)
+barplot(df$C,xlab="A_col ", ylab="E_col")
+barplot(df$E)
+hist(df$D)
+hist(df$F)
+hist(df$G)
+hist(df$J)
+barplot(df$K)
+
+#5: Plot scatter plots to show few relationships 
+
+plot(df$A,df$E, main="Scatterplot Example", col="red", xlab="A_col ", ylab="E_col")
+
+plot(df$B,df$H, main="Scatterplot Example", col="blue", xlab="B_col ", ylab="H_col")
+
+plot(df$J,df$K, main="Scatterplot Example", col="red", xlab="J_col ", ylab="K_col")
+
+plot(df$A,df$C, main="Scatterplot Example", col="green", xlab="A_col ", ylab="C_col")
+
+plot(df$I,df$G, main="Scatterplot Example", col="green", xlab="I_col ", ylab="G_col")
+  
+
+```
+
